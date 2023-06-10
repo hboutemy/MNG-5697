@@ -64,11 +64,11 @@ Tests:
 
 2. using `bundle` dependency type
 
-    - failure when `maven-bundle-plugin` not declared, or not as extension
+    - [2-dependency-type-fail](2-dependency-type-fail): failure when `maven-bundle-plugin` not declared, or not as extension
 
-    - Question: why would a user define `maven-bundle-plugin` when consuming a `bundle` dependency?
+    - [2-dependency-type-success](2-dependency-type-success): success when declared as extension. Question: why would a user define `maven-bundle-plugin` when consuming a `bundle` dependency?
 
-3. multi-module tests
+3. multi-module tests, and multi-depdency types: TODO
 
 ## Testing on overriding core-provided definitions
 
@@ -88,13 +88,14 @@ To be confirmed:
 
 - for artifact handlers:
 
-  1. it forces project using dependency type to declare associated plugin: this looks really odd
+  1. it forces project using dependency type to declare associated plugin: this looks really odd.
+     And default behaviour that just downloads a file with name extension from the type will need to be known: easy to see when expected extension != type, but when it's the same, detecting that other fields of artifact handler are missing will be hard.
 
   2. `java-source` and `javadoc` will require a target location (if anybody really use them as real dependency types...)
 
 
 ## Conclusion
 
-- packaging: change seems reasonable on `ejb`, `ejb3`, `maven-plugin`, `war`, `ear`, `rar`, `par`, even if it's more verbose (require plugin declaration, as extension). But not on `jar`, that should remain in core to be available by default without declaring `maven-jar-plugin`.
+- packaging: with proper documentation for end users, change seems reasonable on `ejb`, `ejb3`, `maven-plugin`, `war`, `ear`, `rar`, `par`, even if it's more verbose (require plugin declaration, as extension). But not on `jar`, that should remain in core (like `pom`) to be available by default without declaring `maven-jar-plugin`.
 
 - artifact handlers: plugin declaration requirement looks awkward.
