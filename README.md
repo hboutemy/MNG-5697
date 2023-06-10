@@ -58,9 +58,9 @@ Tests:
 
 1. using `bundle` packaging with `maven-bundle-plugin`:
 
-    - failure when not declared as extension
+    - [1-packaging-fail](1-packaging-fail): failure when not declared as extension
 
-    - success when declared as extension
+    - [1-packaging-success](1-packaging-success): success when declared as extension
 
 2. using `bundle` dependency type
 
